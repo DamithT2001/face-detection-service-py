@@ -1,6 +1,5 @@
 """Domain interfaces for face detection service."""
 from abc import ABC, abstractmethod
-from typing import BinaryIO
 
 from app.domain.models import FaceDetectionResult
 
