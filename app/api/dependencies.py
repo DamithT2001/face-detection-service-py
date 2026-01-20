@@ -1,4 +1,5 @@
 """Dependency injection for API layer."""
+
 from functools import lru_cache
 
 from app.application.face_detection_service import FaceDetectionService
@@ -10,7 +11,7 @@ from app.api.config import get_settings
 def get_face_detector() -> MediaPipeFaceDetector:
     """
     Get or create MediaPipe face detector instance (cached).
-    
+
     Returns:
         MediaPipeFaceDetector instance
     """
@@ -23,7 +24,7 @@ def get_face_detector() -> MediaPipeFaceDetector:
 def get_face_detection_service() -> FaceDetectionService:
     """
     Get face detection service instance with dependencies.
-    
+
     Returns:
         FaceDetectionService instance
     """
