@@ -6,8 +6,11 @@ pydantic-settings==2.6.1
 python-multipart==0.0.18
 
 # Computer Vision
-# mediapipe 0.10.14 installs opencv-contrib-python which includes all opencv-python functionality
-# and is compatible with numpy 2.x. The legacy solutions API is still available in 0.10.14.
+# IMPORTANT: Version pins are required for numpy 2.x compatibility
+# - mediapipe 0.10.14 is the last version with the legacy solutions API (mp.solutions.face_detection)
+# - It installs opencv-contrib-python 4.13.0.90 which is numpy 2.x compatible
+# - Later versions (0.10.18+) removed the solutions API and require code changes
+# - DO NOT remove version constraints or update to 0.10.18+ without updating the code
 mediapipe==0.10.14
 Pillow==10.4.0
 
