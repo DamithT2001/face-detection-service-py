@@ -1,4 +1,5 @@
 # Core dependencies
+# Python 3.8-3.12 supported (Python 3.13 not yet supported by mediapipe 0.10.14)
 fastapi==0.109.1
 uvicorn[standard]==0.27.0
 pydantic==2.9.2
@@ -11,6 +12,7 @@ python-multipart==0.0.18
 # - It installs opencv-contrib-python 4.13.0.90 which is numpy 2.x compatible
 # - Later versions (0.10.18+) removed the solutions API and require code changes
 # - DO NOT remove version constraints or update to 0.10.18+ without updating the code
+# - Supports Python 3.8-3.12 (Python 3.13 not yet supported - use Python 3.12 or 3.11)
 mediapipe==0.10.14
 Pillow==10.4.0
 
