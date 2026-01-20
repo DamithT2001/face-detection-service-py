@@ -16,7 +16,7 @@ class Settings(BaseSettings):
     )
     
     # Server Configuration
-    host: str = "0.0.0.0"
+    host: str = "localhost"
     port: int = 8000
     debug: bool = False
     

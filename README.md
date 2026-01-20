@@ -83,7 +83,7 @@ docker run -p 8000:8000 face-detection-api
 ### API Endpoints
 
 #### Detect Face
-- **Endpoint**: `POST /api/v1/detect-face`
+- **Endpoint**: `POST /api/detect-face`
 - **Description**: Upload an image to detect if it contains a human face
 - **Request**: Multipart form data with an image file
 - **Response**: JSON with `face_detected` boolean
@@ -97,7 +97,7 @@ docker run -p 8000:8000 face-detection-api
 
 #### Using cURL
 ```bash
-curl -X POST "http://localhost:8000/api/v1/detect-face" \
+curl -X POST "http://localhost:8000/api/detect-face" \
   -H "accept: application/json" \
   -H "Content-Type: multipart/form-data" \
   -F "file=@path/to/image.jpg"
@@ -107,7 +107,7 @@ curl -X POST "http://localhost:8000/api/v1/detect-face" \
 ```python
 import requests
 
-url = "http://localhost:8000/api/v1/detect-face"
+url = "http://localhost:8000/api/detect-face"
 files = {"file": open("image.jpg", "rb")}
 response = requests.post(url, files=files)
 print(response.json())  # {"face_detected": true}
@@ -122,7 +122,7 @@ const fetch = require('node-fetch');
 const form = new FormData();
 form.append('file', fs.createReadStream('image.jpg'));
 
-fetch('http://localhost:8000/api/v1/detect-face', {
+fetch('http://localhost:8000/api/detect-face', {
   method: 'POST',
   body: form
 })
@@ -150,7 +150,7 @@ Available configuration options:
 
 | Variable | Description | Default |
 |----------|-------------|---------|
-| `HOST` | Server host | `0.0.0.0` |
+| `HOST` | Server host | `localhost` |
 | `PORT` | Server port | `8000` |
 | `DEBUG` | Debug mode | `false` |
 | `MIN_DETECTION_CONFIDENCE` | Face detection confidence threshold (0.0-1.0) | `0.5` |
