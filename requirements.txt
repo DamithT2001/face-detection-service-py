@@ -1,14 +1,13 @@
 # Core dependencies
 fastapi==0.109.1
 uvicorn[standard]==0.27.0
-pydantic==2.5.3
-pydantic-settings==2.1.0
+pydantic==2.9.2
+pydantic-settings==2.6.1
 python-multipart==0.0.18
 
 # Computer Vision
 mediapipe==0.10.14
-opencv-python==4.9.0.80
-Pillow==10.3.0
+Pillow==10.4.0
 
 # Testing
 pytest==7.4.4
