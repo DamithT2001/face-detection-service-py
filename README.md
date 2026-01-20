@@ -43,8 +43,8 @@ app/
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/DamithT2001/ai-face-detection-service.git
-cd ai-face-detection-service
+git clone https://github.com/DamithT2001/face-detection-service-py.git
+cd face-detection-service-py
 ```
 
 2. Create and activate virtual environment:
@@ -195,7 +195,7 @@ mypy app/
 ### Project Structure
 
 ```
-ai-face-detection-service/
+face-detection-service-py/
 ├── app/
 │   ├── domain/              # Domain layer
 │   │   ├── models.py        # Domain models
