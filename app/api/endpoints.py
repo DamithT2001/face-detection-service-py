@@ -11,7 +11,7 @@ from app.api.dependencies import get_face_detection_service
 
 logger = logging.getLogger(__name__)
 
-router = APIRouter(prefix="/api/v1", tags=["Face Detection"])
+router = APIRouter(prefix="/api", tags=["Face Detection"])
 
 
 @router.post(

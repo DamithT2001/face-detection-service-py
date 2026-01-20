@@ -46,7 +46,7 @@ class TestFaceDetectionEndpoint:
         
         # Act
         response = client.post(
-            "/api/v1/detect-face",
+            "/api/detect-face",
             files={"file": ("test.png", image_file, "image/png")}
         )
         
@@ -59,7 +59,7 @@ class TestFaceDetectionEndpoint:
     def test_detect_face_without_file(self, client):
         """Test face detection without file."""
         # Act
-        response = client.post("/api/v1/detect-face")
+        response = client.post("/api/detect-face")
         
         # Assert
         assert response.status_code == 422  # Validation error
@@ -71,7 +71,7 @@ class TestFaceDetectionEndpoint:
         
         # Act
         response = client.post(
-            "/api/v1/detect-face",
+            "/api/detect-face",
             files={"file": ("empty.png", empty_file, "image/png")}
         )
         
@@ -87,7 +87,7 @@ class TestFaceDetectionEndpoint:
         
         # Act
         response = client.post(
-            "/api/v1/detect-face",
+            "/api/detect-face",
             files={"file": ("test.txt", text_file, "text/plain")}
         )
         
@@ -103,7 +103,7 @@ class TestFaceDetectionEndpoint:
         
         # Act
         response = client.post(
-            "/api/v1/detect-face",
+            "/api/detect-face",
             files={"file": ("corrupted.png", corrupted_data, "image/png")}
         )
         
@@ -119,7 +119,7 @@ class TestFaceDetectionEndpoint:
         
         # Act
         response = client.post(
-            "/api/v1/detect-face",
+            "/api/detect-face",
             files={"file": ("test.png", image_file, "image/png")}
         )
         
