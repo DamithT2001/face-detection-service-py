@@ -22,7 +22,7 @@ def setup_logging(log_level: str) -> None:
 
 
 @asynccontextmanager
-async def lifespan(app: FastAPI):
+async def lifespan(_app: FastAPI):
     """Application lifespan handler."""
     settings = get_settings()
     setup_logging(settings.log_level)
@@ -35,12 +35,12 @@ async def lifespan(app: FastAPI):
 def create_app() -> FastAPI:
     """
     Create and configure FastAPI application.
-    
+
     Returns:
         Configured FastAPI application instance
     """
     settings = get_settings()
-    
+
     app = FastAPI(
         title=settings.api_title,
         version=settings.api_version,
@@ -50,7 +50,7 @@ def create_app() -> FastAPI:
         redoc_url="/redoc",
         openapi_url="/openapi.json",
     )
-    
+
     # Add CORS middleware
     app.add_middleware(
         CORSMiddleware,
@@ -59,10 +59,10 @@ def create_app() -> FastAPI:
         allow_methods=["*"],
         allow_headers=["*"],
     )
-    
+
     # Include routers
     app.include_router(router)
-    
+
     # Health check endpoint
     @app.get(
         "/health",
@@ -77,7 +77,7 @@ def create_app() -> FastAPI:
             status="healthy",
             version=settings.api_version
         )
-    
+
     return app
 
 

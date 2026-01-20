@@ -4,12 +4,12 @@ from pydantic import BaseModel, Field
 
 class FaceDetectionResponse(BaseModel):
     """Response model for face detection endpoint."""
-    
+
     face_detected: bool = Field(
         ...,
         description="Whether a human face was detected in the image"
     )
-    
+
     class Config:
         json_schema_extra = {
             "example": {
@@ -20,10 +20,10 @@ class FaceDetectionResponse(BaseModel):
 
 class HealthResponse(BaseModel):
     """Response model for health check endpoint."""
-    
+
     status: str = Field(..., description="Service status")
     version: str = Field(..., description="API version")
-    
+
     class Config:
         json_schema_extra = {
             "example": {
@@ -35,9 +35,9 @@ class HealthResponse(BaseModel):
 
 class ErrorResponse(BaseModel):
     """Response model for error cases."""
-    
+
     detail: str = Field(..., description="Error message")
-    
+
     class Config:
         json_schema_extra = {
             "example": {

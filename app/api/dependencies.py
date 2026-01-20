@@ -10,7 +10,7 @@ from app.api.config import get_settings
 def get_face_detector() -> MediaPipeFaceDetector:
     """
     Get or create MediaPipe face detector instance (cached).
-    
+
     Returns:
         MediaPipeFaceDetector instance
     """
@@ -23,7 +23,7 @@ def get_face_detector() -> MediaPipeFaceDetector:
 def get_face_detection_service() -> FaceDetectionService:
     """
     Get face detection service instance with dependencies.
-    
+
     Returns:
         FaceDetectionService instance
     """
