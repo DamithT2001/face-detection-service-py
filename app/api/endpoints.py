@@ -1,4 +1,5 @@
 """API endpoints for face detection service."""
+
 import logging
 from typing import Annotated
 
@@ -47,8 +48,7 @@ async def detect_face(
     if not file:
         logger.warning("No file provided in request")
         raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail="No image file provided"
+            status_code=status.HTTP_400_BAD_REQUEST, detail="No image file provided"
         )
 
     # Validate content type
@@ -56,7 +56,7 @@ async def detect_face(
         logger.warning(f"Invalid content type: {file.content_type}")
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
-            detail=f"Invalid file type: {file.content_type}. Must be an image."
+            detail=f"Invalid file type: {file.content_type}. Must be an image.",
         )
 
     try:
@@ -66,8 +66,7 @@ async def detect_face(
         if not image_data:
             logger.warning("Empty file uploaded")
             raise HTTPException(
-                status_code=status.HTTP_400_BAD_REQUEST,
-                detail="Uploaded file is empty"
+                status_code=status.HTTP_400_BAD_REQUEST, detail="Uploaded file is empty"
             )
 
         # Perform face detection
@@ -80,13 +79,10 @@ async def detect_face(
         raise
     except ValueError as e:
         logger.error(f"Validation error: {str(e)}")
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail=str(e)
-        )
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(e))
     except Exception:
         logger.exception("Unexpected error during face detection")
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail="An unexpected error occurred while processing the image"
+            detail="An unexpected error occurred while processing the image",
         )

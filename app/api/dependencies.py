@@ -1,4 +1,5 @@
 """Dependency injection for API layer."""
+
 from functools import lru_cache
 
 from app.application.face_detection_service import FaceDetectionService

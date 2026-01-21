@@ -1,4 +1,5 @@
 """MediaPipe face detector implementation."""
+
 import logging
 from io import BytesIO
 
@@ -59,7 +60,9 @@ class MediaPipeFaceDetector(IFaceDetector):
                 results = face_detection.process(rgb_image)
 
                 # Check if any faces were detected
-                face_detected = results.detections is not None and len(results.detections) > 0
+                face_detected = (
+                    results.detections is not None and len(results.detections) > 0
+                )
 
                 if face_detected:
                     logger.debug(f"Detected {len(results.detections)} face(s)")
@@ -72,8 +75,7 @@ class MediaPipeFaceDetector(IFaceDetector):
                     confidence = None
 
                 return FaceDetectionResult(
-                    face_detected=face_detected,
-                    confidence=confidence
+                    face_detected=face_detected, confidence=confidence
                 )
 
         except Exception as e:
@@ -95,12 +97,12 @@ class MediaPipeFaceDetector(IFaceDetector):
         """
         try:
             # Try to open with PIL first
-            image = Image.open(BytesIO(image_data))
+            pil_image = Image.open(BytesIO(image_data))
             # Convert to RGB if necessary
-            if image.mode != 'RGB':
-                image = image.convert('RGB')
+            if pil_image.mode != "RGB":
+                pil_image = pil_image.convert("RGB")  # type: ignore[assignment]
             # Convert PIL Image to numpy array
-            image_array = np.array(image)
+            image_array = np.array(pil_image)
             # Convert RGB to BGR for OpenCV
             image_array = cv2.cvtColor(image_array, cv2.COLOR_RGB2BGR)
             return image_array

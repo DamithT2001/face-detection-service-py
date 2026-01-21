@@ -1,4 +1,5 @@
 """Application service for face detection use cases."""
+
 import logging
 
 from app.domain.interfaces import IFaceDetector
@@ -40,7 +41,9 @@ class FaceDetectionService:
         try:
             logger.info("Processing face detection request")
             result = self._face_detector.detect_face(image_data)
-            logger.info(f"Face detection completed: face_detected={result.face_detected}")
+            logger.info(
+                f"Face detection completed: face_detected={result.face_detected}"
+            )
             return result
         except Exception as e:
             logger.error(f"Face detection failed: {str(e)}")

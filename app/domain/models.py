@@ -1,4 +1,5 @@
 """Domain models for face detection service."""
+
 from dataclasses import dataclass
 from typing import Optional
 
@@ -12,6 +13,4 @@ class FaceDetectionResult:
 
     def to_dict(self) -> dict:
         """Convert to dictionary representation."""
-        return {
-            "face_detected": self.face_detected
-        }
+        return {"face_detected": self.face_detected}

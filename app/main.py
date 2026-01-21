@@ -1,4 +1,5 @@
 """Main FastAPI application."""
+
 import logging
 import sys
 from contextlib import asynccontextmanager
@@ -17,12 +18,12 @@ def setup_logging(log_level: str) -> None:
     logging.basicConfig(
         level=getattr(logging, log_level.upper()),
         format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-        handlers=[logging.StreamHandler(sys.stdout)]
+        handlers=[logging.StreamHandler(sys.stdout)],
     )
 
 
 @asynccontextmanager
-async def lifespan(_app: FastAPI):
+async def lifespan(app: FastAPI):
     """Application lifespan handler."""
     settings = get_settings()
     setup_logging(settings.log_level)
@@ -69,14 +70,11 @@ def create_app() -> FastAPI:
         response_model=HealthResponse,
         tags=["Health"],
         summary="Health check",
-        description="Check if the service is running and healthy"
+        description="Check if the service is running and healthy",
     )
     async def health_check() -> HealthResponse:
         """Health check endpoint."""
-        return HealthResponse(
-            status="healthy",
-            version=settings.api_version
-        )
+        return HealthResponse(status="healthy", version=settings.api_version)
 
     return app
 
@@ -87,6 +85,7 @@ app = create_app()
 
 if __name__ == "__main__":
     import uvicorn
+
     settings = get_settings()
     uvicorn.run(
         "app.main:app",
