@@ -11,7 +11,7 @@ services:
       - MIN_DETECTION_CONFIDENCE=0.5
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      test: ["CMD", "python", "-c", "import sys; import urllib.request; sys.exit(0 if urllib.request.urlopen('http://localhost:8000/health').getcode() == 200 else 1)"]
       interval: 30s
       timeout: 10s
       retries: 3
