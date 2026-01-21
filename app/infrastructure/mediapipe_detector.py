@@ -23,7 +23,8 @@ class MediaPipeFaceDetector(IFaceDetector):
         Initialize MediaPipe face detector.
 
         Args:
-            min_detection_confidence: Minimum confidence threshold for detection (0.0-1.0)
+            min_detection_confidence: Minimum confidence threshold
+                for detection (0.0-1.0)
         """
         self._min_detection_confidence = min_detection_confidence
         self._mp_face_detection = mp.solutions.face_detection

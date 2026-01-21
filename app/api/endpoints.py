@@ -25,7 +25,10 @@ router = APIRouter(prefix="/api", tags=["Face Detection"])
         500: {"model": ErrorResponse, "description": "Internal server error"},
     },
     summary="Detect human face in image",
-    description="Upload an image and receive a boolean indicating whether a human face was detected.",
+    description=(
+        "Upload an image and receive a boolean indicating "
+        "whether a human face was detected."
+    ),
 )
 async def detect_face(
     file: Annotated[UploadFile, File(description="Image file to analyze")],

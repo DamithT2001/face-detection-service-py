@@ -7,6 +7,7 @@ python-multipart==0.0.18
 
 # Computer Vision
 mediapipe==0.10.14
+opencv-python==4.10.0.84
 Pillow==10.4.0
 
 # Testing
