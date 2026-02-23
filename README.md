@@ -93,46 +93,9 @@ docker run -p 8000:8000 face-detection-api
 - **Description**: Check service health and version
 - **Response**: JSON with status and version
 
-### Example Usage
-
-#### Using cURL
-```bash
-curl -X POST "http://localhost:8000/api/detect-face" \
-  -H "accept: application/json" \
-  -H "Content-Type: multipart/form-data" \
-  -F "file=@path/to/image.jpg"
-```
-
-#### Using Python
-```python
-import requests
-
-url = "http://localhost:8000/api/detect-face"
-files = {"file": open("image.jpg", "rb")}
-response = requests.post(url, files=files)
-print(response.json())  # {"face_detected": true}
-```
-
-#### Using JavaScript/Node.js
-```javascript
-const fs = require('fs');
-const FormData = require('form-data');
-const fetch = require('node-fetch');
-
-const form = new FormData();
-form.append('file', fs.createReadStream('image.jpg'));
-
-fetch('http://localhost:8000/api/detect-face', {
-  method: 'POST',
-  body: form
-})
-.then(res => res.json())
-.then(data => console.log(data));  // {face_detected: true}
-```
-
 ### API Documentation
 
-Once the service is running, access the interactive API documentation:
+Once the service is running, access the API documentation:
 
 - **Swagger UI**: http://localhost:8000/docs
 - **ReDoc**: http://localhost:8000/redoc
@@ -141,10 +104,6 @@ Once the service is running, access the interactive API documentation:
 ## Configuration
 
 Configuration can be managed through environment variables. Copy `.env.example` to `.env` and adjust values:
-
-```bash
-cp .env.example .env
-```
 
 Available configuration options:
 
@@ -192,35 +151,6 @@ Type check with mypy:
 mypy app/
 ```
 
-### Project Structure
-
-```
-face-detection-service-py/
-├── app/
-│   ├── domain/              # Domain layer
-│   │   ├── models.py        # Domain models
-│   │   └── interfaces.py    # Domain interfaces
-│   ├── application/         # Application layer
-│   │   └── face_detection_service.py  # Use cases
-│   ├── infrastructure/      # Infrastructure layer
-│   │   └── mediapipe_detector.py  # MediaPipe implementation
-│   ├── api/                 # API layer
-│   │   ├── endpoints.py     # API routes
-│   │   ├── schemas.py       # Request/response models
-│   │   ├── dependencies.py  # Dependency injection
-│   │   └── config.py        # Configuration
-│   └── main.py              # Application entry point
-├── tests/                   # Test suite
-│   ├── test_domain.py
-│   ├── test_application.py
-│   ├── test_infrastructure.py
-│   └── test_api.py
-├── requirements.txt         # Python dependencies
-├── Dockerfile              # Docker configuration
-├── docker-compose.yml      # Docker Compose configuration
-└── README.md               # This file
-```
-
 ## Design Decisions
 
 ### Clean Architecture
@@ -257,20 +187,3 @@ The API returns only `{"face_detected": boolean}` as specified, keeping the resp
 - No data persistence (images are not stored)
 - CORS configured (adjust for production)
 - Comprehensive error handling
-
-## License
-
-MIT License
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests for new functionality
-5. Ensure all tests pass
-6. Submit a pull request
-
-## Support
-
-For issues and questions, please open an issue on GitHub.
